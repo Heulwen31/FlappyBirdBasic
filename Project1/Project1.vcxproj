@@ -71,8 +71,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>D:\Documents\Project\Project1\SDL 2.0\SDL2-2.0.12\include;D:\Documents\Project\Project1\SDL 2.0\SDL2_ttf-2.0.15\include;D:\Documents\Project\Project1\SDL 2.0\SDL2_mixer-2.0.4\include;D:\Documents\Project\Project1\SDL 2.0\SDL2_image-2.0.5\include;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\Documents\Project\Project1\SDL 2.0\SDL2-2.0.12\lib\x86;D:\Documents\Project\Project1\SDL 2.0\SDL2_ttf-2.0.15\lib\x86;D:\Documents\Project\Project1\SDL 2.0\SDL2_mixer-2.0.4\lib\x86;D:\Documents\Project\Project1\SDL 2.0\SDL2_image-2.0.5\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>D:\Desktop\FlappyBirdBasic\SDL 2.0\SDL2-2.0.12\include;D:\Desktop\FlappyBirdBasic\SDL 2.0\SDL2_ttf-2.0.15\include;D:\Desktop\FlappyBirdBasic\SDL 2.0\SDL2_mixer-2.0.4\include;D:\Desktop\FlappyBirdBasic\SDL 2.0\SDL2_image-2.0.5\include;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\Desktop\FlappyBirdBasic\SDL 2.0\SDL2-2.0.12\lib\x86;D:\Desktop\FlappyBirdBasic\SDL 2.0\SDL2_ttf-2.0.15\lib\x86;D:\Desktop\FlappyBirdBasic\SDL 2.0\SDL2_mixer-2.0.4\lib\x86;D:\Desktop\FlappyBirdBasic\SDL 2.0\SDL2_image-2.0.5\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -91,7 +91,7 @@
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
@@ -141,7 +141,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="flapybird.cpp" />
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="Map.cpp" />
+    <ClCompile Include="TextureManager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Map.h" />
+    <ClInclude Include="TextureManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
