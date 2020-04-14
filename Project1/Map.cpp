@@ -3,6 +3,7 @@
 
 int lvl1[20][25] =
 {
+	{3,2,1,3,2,1,3,2,1,3,2,1,3,2,1,3,2,1,3,2,1,3,2,1,3},
 	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -21,14 +22,13 @@ int lvl1[20][25] =
 	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-	{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+	{1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1}
 };
 
 Map::Map()
 {
 	dirt = TextureManager::LoadTexture("image/dirt.png");
-	grass = TextureManager::LoadTexture("image/pipe.png");
+	grass = TextureManager::LoadTexture("image/grass.png");
 	water = TextureManager::LoadTexture("image/water.png");
 
 	LoadMap(lvl1);
@@ -37,6 +37,10 @@ Map::Map()
 	src.h = dest.h = 32;
 
 	dest.x = dest.y = 0;
+}
+
+Map::~Map()
+{
 }
 
 void Map::LoadMap(int arr[20][25])
@@ -63,8 +67,8 @@ void Map::DrawMap()
 			dest.y = row * 32;
 			switch (type)
 			{
-			case 0:
-				//TextureManager::Draw(dirt, src, dest);
+			case 3:
+				TextureManager::Draw(dirt, src, dest);
 				break;
 			case 1:
 				TextureManager::Draw(grass, src, dest);
@@ -72,6 +76,7 @@ void Map::DrawMap()
 			case 2:
 				TextureManager::Draw(water, src, dest);
 				break;
+				
 			default:
 				break;
 			}

@@ -7,6 +7,9 @@
 #include <SDL_image.h>
 #include <SDL_mixer.h>
 #include <SDL_ttf.h>
+
+
+
 class Game
 {
 public:
@@ -25,10 +28,14 @@ public:
 
 	static SDL_Renderer* renderer;
 
+
+	static SDL_Event event;
+
+
 private:
 	bool isRunning = false;
 	SDL_Window* window;
-	int cnt = 0;
+	
 };
 
 #endif // !Game_h
