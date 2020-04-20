@@ -16,13 +16,43 @@ GameObject::~GameObject()
 
 void GameObject::Update()
 {
-
-	
-	xpos;
-	if (xpos == 800)
+	if (xpos <= 800 && xpos >= 0)
 	{
-		xpos = 0;
+		if (Game::event.type == SDL_KEYDOWN)
+        {
+            //Select surfaces based on key press
+            switch (Game::event.key.keysym.sym)
+            {
+            case SDLK_UP:
+				ypos--;
+                break;
+
+            case SDLK_DOWN:
+				ypos++;
+                break;
+
+            case SDLK_LEFT:
+				xpos--;
+                break;
+
+            case SDLK_RIGHT:
+				xpos++;
+                break;
+
+            default:
+                break;
+            }
+        }
 	}
+	else
+	{
+		if (xpos >= 800)
+		{
+			xpos = 0;
+		}
+	}
+	
+    
 	srcRect.h = 50;
 	srcRect.w = 48;
 	srcRect.x = 0;

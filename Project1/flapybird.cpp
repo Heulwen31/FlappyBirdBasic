@@ -4,9 +4,9 @@ Game* game = nullptr;
 
 int main(int argc, char* argv[])
 {
-	int a = 1001;
+	int a = 100;
 	const int FPS = 60;
-	const int frameDelay = 100 / FPS;
+	const int frameDelay = a / FPS;
 	Uint32 frameStart;
 	int frameTime;
 	game = new Game();

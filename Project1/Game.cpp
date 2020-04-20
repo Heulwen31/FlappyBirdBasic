@@ -1,18 +1,27 @@
-#include "Game.h"
+﻿#include "Game.h"
 #include "TextureManager.h"
 #include "GameObject.h"
 #include "Map.h"
-
+#include "ECS.h"
+#include "Components.h"
 
 using namespace std;
 
-SDL_Texture* backgroud;
-GameObject* player;
-Map* map;
+
+
+
 SDL_Renderer* Game::renderer = nullptr;
 SDL_Event Game::event;
 
 
+Map* map;
+SDL_Texture* backgroud;
+
+// Người chơi
+GameObject* player;
+
+
+// Mỗi nguy hiểm
 GameObject* enemy1;
 GameObject* enemy2;
 GameObject* enemy3;
@@ -24,8 +33,7 @@ GameObject* enemy8;
 GameObject* enemy9;
 GameObject* enemy10;
 
-int x = 0;
-int y = 320;
+
 
 Game::Game()
 {
@@ -57,8 +65,18 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		}
 		isRunning = true;
 	}
+
+
+	// Load nền
 	backgroud = TextureManager::LoadTexture("image/bg.jpg");
-	player = new GameObject("image/bird.png",x,y);
+
+
+
+	//Nhân vật 
+	player = new GameObject("image/bird.png",340,340);
+
+
+	// Mối hiểm họa
 	enemy1 = new GameObject("image/enemy.png", 300, 150);
 	enemy2 = new GameObject("image/enemy.png", 100, 100);
 	enemy3 = new GameObject("image/enemy.png", 150, 30);
@@ -70,6 +88,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	enemy9 = new GameObject("image/enemy.png", 300, 284);
 	enemy10 = new GameObject("image/enemy.png", 350, 10);
 	map = new Map();
+
 }
 void Game::handleEvents()
 {
@@ -88,6 +107,7 @@ void Game::handleEvents()
 void Game::update()
 {
 	player->Update();
+
 	enemy1->Update_Enemy();
 	enemy2->Update_Enemy();
 	enemy3->Update_Enemy();
@@ -98,13 +118,15 @@ void Game::update()
 	enemy8->Update_Enemy();
 	enemy9->Update_Enemy();
 	enemy10->Update_Enemy();
+;
 }
 
 void Game::render()
 {
 	SDL_RenderClear(renderer);
+
 	SDL_RenderCopy(renderer, backgroud, NULL, NULL);
-	map->DrawMap();
+	
 	enemy1->Render();
 	enemy2->Render();
 	enemy3->Render();
@@ -115,7 +137,11 @@ void Game::render()
 	enemy8->Render();
 	enemy9->Render();
 	enemy10->Render();
+	
 	player->Render();
+
+	map->DrawMap();
+	
 	SDL_RenderPresent(renderer);
 }
 
