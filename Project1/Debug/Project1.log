@@ -1,2 +1,2 @@
-﻿  Game.cpp
-D:\Desktop\FlappyBirdBasic\Project1\Game.cpp(5,10): fatal error C1083: Cannot open include file: 'ECS.h': No such file or directory
+﻿  flapybird.cpp
+  Project1.vcxproj -> D:\Desktop\FlappyBirdBasic\Debug\Project1.exe

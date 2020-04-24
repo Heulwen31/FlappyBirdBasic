@@ -2,12 +2,9 @@
 #include "TextureManager.h"
 #include "GameObject.h"
 #include "Map.h"
-#include "ECS.h"
-#include "Components.h"
+
 
 using namespace std;
-
-
 
 
 SDL_Renderer* Game::renderer = nullptr;
@@ -71,9 +68,8 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	backgroud = TextureManager::LoadTexture("image/bg.jpg");
 
 
-
 	//Nhân vật 
-	player = new GameObject("image/bird.png",340,340);
+	player = new GameObject("image/bird.png",200,100);
 
 
 	// Mối hiểm họa
@@ -150,4 +146,9 @@ void Game::clean()
 	SDL_DestroyWindow(window);
 	SDL_DestroyRenderer(renderer);
 	SDL_Quit();
+}
+
+bool Game::VaCham()
+{
+	return player->Check(player->destRect,enemy1->destRect);
 }

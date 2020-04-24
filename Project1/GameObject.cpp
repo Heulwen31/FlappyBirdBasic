@@ -16,11 +16,10 @@ GameObject::~GameObject()
 
 void GameObject::Update()
 {
-	if (xpos <= 800 && xpos >= 0)
+	if (xpos <= 800 && xpos >= 0 && ypos >= 0 && ypos <= 640)
 	{
 		if (Game::event.type == SDL_KEYDOWN)
         {
-            //Select surfaces based on key press
             switch (Game::event.key.keysym.sym)
             {
             case SDLK_UP:
@@ -44,11 +43,26 @@ void GameObject::Update()
             }
         }
 	}
-	else
+	else if ((xpos < 0 || xpos > 800) && (ypos >= 0 && ypos <= 640))
 	{
-		if (xpos >= 800)
+		if (xpos < 0)
+		{
+			xpos = 800;
+		}
+		else if (xpos > 800)
 		{
 			xpos = 0;
+		}
+	}
+	else if ((ypos < 0 || ypos > 640) && (xpos >= 0 && xpos <= 800))
+	{
+		if (ypos < 0)
+		{
+			ypos = 640;
+		}
+		else if (ypos > 640)
+		{
+			ypos = 0;
 		}
 	}
 	
@@ -85,4 +99,91 @@ void GameObject::Update_Enemy()
 void GameObject::Render()
 {
 	SDL_RenderCopy(Game::renderer, objTexture, &srcRect, &destRect);
+}
+
+bool GameObject::Check(const SDL_Rect& object1, const SDL_Rect& object2)
+{
+    int left_a = object1.x;
+    int right_a = object1.x + object1.w;
+    int top_a = object1.y;
+    int bottom_a = object1.y + object1.h;
+
+    int left_b = object2.x;
+    int right_b = object2.x + object2.w;
+    int top_b = object2.y;
+    int bottom_b = object2.y + object2.h;
+
+    // Case 1: size object 1 < size object 2
+    if (left_a > left_b && left_a < right_b)
+    {
+        if (top_a > top_b && top_a < bottom_b)
+        {
+            return true;
+        }
+    }
+
+    if (left_a > left_b && left_a < right_b)
+    {
+        if (bottom_a > top_b && bottom_a < bottom_b)
+        {
+            return true;
+        }
+    }
+
+    if (right_a > left_b && right_a < right_b)
+    {
+        if (top_a > top_b && top_a < bottom_b)
+        {
+            return true;
+        }
+    }
+
+    if (right_a > left_b && right_a < right_b)
+    {
+        if (bottom_a > top_b && bottom_a < bottom_b)
+        {
+            return true;
+        }
+    }
+
+    // Case 2: size object 1 < size object 2
+    if (left_b > left_a && left_b < right_a)
+    {
+        if (top_b > top_a && top_b < bottom_a)
+        {
+            return true;
+        }
+    }
+
+    if (left_b > left_a && left_b < right_a)
+    {
+        if (bottom_b > top_a && bottom_b < bottom_a)
+        {
+            return true;
+        }
+    }
+
+    if (right_b > left_a && right_b < right_a)
+    {
+        if (top_b > top_a && top_b < bottom_a)
+        {
+            return true;
+        }
+    }
+
+    if (right_b > left_a && right_b < right_a)
+    {
+        if (bottom_b > top_a && bottom_b < bottom_a)
+        {
+            return true;
+        }
+    }
+
+    // Case 3: size object 1 = size object 2
+    if (top_a == top_b && right_a == right_b && bottom_a == bottom_b)
+    {
+        return true;
+    }
+
+    return false;
 }

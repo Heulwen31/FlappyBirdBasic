@@ -7,8 +7,8 @@
 #include <SDL_image.h>
 #include <SDL_mixer.h>
 #include <SDL_ttf.h>
-
-
+#include <vector>
+#include "GameObject.h"
 
 class Game
 {
@@ -22,7 +22,7 @@ public:
 	void update();
 	void render();
 	void clean();
-
+	bool VaCham();
 	bool running() { return isRunning; }
 
 
@@ -30,7 +30,6 @@ public:
 
 
 	static SDL_Event event;
-
 
 private:
 	bool isRunning = false;

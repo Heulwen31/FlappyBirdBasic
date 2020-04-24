@@ -9,12 +9,11 @@ class GameObject
 public:
 	GameObject(const char* texturesheet,int x, int y);
 	~GameObject();
-
 	void Update();
 	void Update_Enemy();
 	void Render();
-	
-private:
+	bool Check(const SDL_Rect& object1 , const SDL_Rect& object2);
+
 	int xpos;
 	int ypos;
 	SDL_Texture* objTexture;
@@ -23,7 +22,6 @@ private:
 
 
 };
-
 
 #endif // !GAME_OBJECT_H
 
