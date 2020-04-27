@@ -16,8 +16,8 @@ int main(int argc, char* argv[])
 	{
 		cout << "Error\n";
 	}
-	Mix_Music* music = Mix_LoadMUS("audio/else.mp3");
-	while (game->running())
+	Mix_Music* music = Mix_LoadMUS("audio/can.mp3");
+	while (game->running() && game->VaCham() == false)
 	{
 		frameStart = SDL_GetTicks();
 		game->handleEvents();
@@ -33,6 +33,9 @@ int main(int argc, char* argv[])
 			SDL_Delay(frameDelay - frameTime);
 		}
 	}
+	SDL_Delay(2000);
+	game->render2();
+	SDL_Delay(10000);
 	game->clean();
 	return 0;
 }

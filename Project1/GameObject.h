@@ -12,7 +12,7 @@ public:
 	void Update();
 	void Update_Enemy();
 	void Render();
-	bool Check(const SDL_Rect& object1 , const SDL_Rect& object2);
+	bool Check(SDL_Rect& object1 , SDL_Rect& object2);
 
 	int xpos;
 	int ypos;

@@ -14,6 +14,8 @@ SDL_Event Game::event;
 Map* map;
 SDL_Texture* backgroud;
 
+SDL_Texture* bg;
+
 // Người chơi
 GameObject* player;
 
@@ -64,12 +66,14 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	}
 
 
-	// Load nền
+	// Load nền cóntinue
 	backgroud = TextureManager::LoadTexture("image/bg.jpg");
 
+	// load nen  kh game ket thuc
+	bg = TextureManager::LoadTexture("image/a.jpg");
 
 	//Nhân vật 
-	player = new GameObject("image/bird.png",200,100);
+	player = new GameObject("image/bird.png",700,500);
 
 
 	// Mối hiểm họa
@@ -141,6 +145,16 @@ void Game::render()
 	SDL_RenderPresent(renderer);
 }
 
+void Game::render2()
+{
+	SDL_RenderClear(renderer);
+
+	SDL_RenderCopy(renderer, bg, NULL, NULL);
+	SDL_RenderPresent(renderer);
+}
+
+
+
 void Game::clean()
 {
 	SDL_DestroyWindow(window);
@@ -150,5 +164,14 @@ void Game::clean()
 
 bool Game::VaCham()
 {
-	return player->Check(player->destRect,enemy1->destRect);
+	return player->Check(player->destRect, enemy1->destRect) == false 
+	&& player->Check(player->destRect, enemy2->destRect) == false
+	&& player->Check(player->destRect, enemy3->destRect) == false 
+	&& player->Check(player->destRect, enemy4->destRect) == false 
+	&& player->Check(player->destRect, enemy5->destRect) == false 
+	&& player->Check(player->destRect, enemy6->destRect) == false 
+	&& player->Check(player->destRect, enemy7->destRect) == false 
+	&& player->Check(player->destRect, enemy8->destRect) == false 
+	&& player->Check(player->destRect, enemy9->destRect) == false 
+	&& player->Check(player->destRect, enemy10->destRect) == false ? false : true;
 }

@@ -21,6 +21,7 @@ public:
 	void handleEvents();
 	void update();
 	void render();
+	void render2();
 	void clean();
 	bool VaCham();
 	bool running() { return isRunning; }
