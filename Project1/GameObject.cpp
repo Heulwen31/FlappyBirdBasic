@@ -16,6 +16,7 @@ GameObject::~GameObject()
 
 void GameObject::Update()
 {
+	int a = 2;
 	if (xpos <= 800 && xpos >= 0 && ypos >= 0 && ypos <= 640)
 	{
 		if (Game::event.type == SDL_KEYDOWN)
@@ -23,19 +24,19 @@ void GameObject::Update()
             switch (Game::event.key.keysym.sym)
             {
             case SDLK_UP:
-				ypos--;
+				ypos-=a;
                 break;
 
             case SDLK_DOWN:
-				ypos++;
+				ypos+=a;
                 break;
 
             case SDLK_LEFT:
-				xpos--;
+				xpos-=a;
                 break;
 
             case SDLK_RIGHT:
-				xpos++;
+				xpos+=a;
                 break;
 
             default:
@@ -80,10 +81,12 @@ void GameObject::Update()
 
 void GameObject::Update_Enemy()
 {
-	xpos-=2;
+	int a = 2;
+	xpos-=a;
 	if (xpos == -32)
 	{
 		xpos = 800;
+		ypos = rand() % 800 + 1;
 	}
 	srcRect.h = 32;
 	srcRect.w = 32;

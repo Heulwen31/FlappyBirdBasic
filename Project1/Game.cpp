@@ -1,7 +1,7 @@
 ﻿#include "Game.h"
 #include "TextureManager.h"
 #include "GameObject.h"
-#include "Map.h"
+
 
 
 using namespace std;
@@ -11,7 +11,6 @@ SDL_Renderer* Game::renderer = nullptr;
 SDL_Event Game::event;
 
 
-Map* map;
 SDL_Texture* backgroud;
 
 SDL_Texture* bg;
@@ -67,27 +66,25 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 
 	// Load nền cóntinue
-	backgroud = TextureManager::LoadTexture("image/bg.jpg");
+	backgroud = TextureManager::LoadTexture("image/bk.jpg");
 
 	// load nen  kh game ket thuc
-	bg = TextureManager::LoadTexture("image/a.jpg");
+	bg = TextureManager::LoadTexture("image/go.jpg");
 
 	//Nhân vật 
 	player = new GameObject("image/bird.png",700,500);
 
-
 	// Mối hiểm họa
-	enemy1 = new GameObject("image/enemy.png", 300, 150);
-	enemy2 = new GameObject("image/enemy.png", 100, 100);
-	enemy3 = new GameObject("image/enemy.png", 150, 30);
-	enemy4 = new GameObject("image/enemy.png", 250, 400);
-	enemy5 = new GameObject("image/enemy.png", 490, 320);
-	enemy6 = new GameObject("image/enemy.png", 5600, 100);
-	enemy7 = new GameObject("image/enemy.png", 600, 1600);
-	enemy8 = new GameObject("image/enemy.png", 470, 274);
-	enemy9 = new GameObject("image/enemy.png", 300, 284);
-	enemy10 = new GameObject("image/enemy.png", 350, 10);
-	map = new Map();
+	enemy1 = new GameObject("image/enemy.png", 300, rand() % 800 + 1);
+	enemy2 = new GameObject("image/enemy.png", 100, rand() % 800 + 1);
+	enemy3 = new GameObject("image/enemy.png", 150, rand() % 800 + 1);
+	enemy4 = new GameObject("image/enemy.png", 250, rand() % 800 + 1);
+	enemy5 = new GameObject("image/enemy.png", 490, rand() % 800 + 1);
+	enemy6 = new GameObject("image/enemy.png", 5600,rand() % 800 + 1);
+	enemy7 = new GameObject("image/enemy.png", 600, rand() % 800 + 1);
+	enemy8 = new GameObject("image/enemy.png", 470, rand() % 800 + 1);
+	enemy9 = new GameObject("image/enemy.png", 300, rand() % 800 + 1);
+	enemy10 = new GameObject("image/enemy.png",350, rand() % 800 + 1);
 
 }
 void Game::handleEvents()
@@ -140,8 +137,6 @@ void Game::render()
 	
 	player->Render();
 
-	map->DrawMap();
-	
 	SDL_RenderPresent(renderer);
 }
 
@@ -175,3 +170,6 @@ bool Game::VaCham()
 	&& player->Check(player->destRect, enemy9->destRect) == false 
 	&& player->Check(player->destRect, enemy10->destRect) == false ? false : true;
 }
+
+
+

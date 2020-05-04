@@ -19,8 +19,6 @@ public:
 	SDL_Texture* objTexture;
 	SDL_Rect srcRect;
 	SDL_Rect destRect;
-
-
 };
 
 #endif // !GAME_OBJECT_H

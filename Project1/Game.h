@@ -8,6 +8,8 @@
 #include <SDL_mixer.h>
 #include <SDL_ttf.h>
 #include <vector>
+#include <cstdlib>
+#include <ctime>
 #include "GameObject.h"
 
 class Game
@@ -25,13 +27,14 @@ public:
 	void clean();
 	bool VaCham();
 	bool running() { return isRunning; }
-
+	
 
 	static SDL_Renderer* renderer;
 
 
 	static SDL_Event event;
 
+	
 private:
 	bool isRunning = false;
 	SDL_Window* window;
