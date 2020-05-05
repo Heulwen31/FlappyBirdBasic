@@ -1,18 +1,23 @@
 ﻿#include "Game.h"
 #include "TextureManager.h"
 #include "GameObject.h"
-
+#include "LoadText.h"
 
 
 using namespace std;
 
 
+
+//Globally used font
+TTF_Font* gFont = NULL;
+
+
+
 SDL_Renderer* Game::renderer = nullptr;
 SDL_Event Game::event;
-
-
+// hinhf nen mo than ket cua ham
+SDL_Texture* strar;
 SDL_Texture* backgroud;
-
 SDL_Texture* bg;
 
 // Người chơi
@@ -32,6 +37,10 @@ GameObject* enemy9;
 GameObject* enemy10;
 
 
+// tt f menu và lựa chọn 
+
+TTF_Font* g_font_text = NULL;
+TTF_Font* g_font_MENU = NULL;
 
 Game::Game()
 {
@@ -61,18 +70,27 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 			SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 			cout << "renderer correct\n";
 		}
+		
 		isRunning = true;
 	}
+	if (TTF_Init() == -1)
+	{
+		cout << "errror\n";
+	}
 
-
+	
+	g_font_text = TTF_OpenFont("image/lazy.ttf", 38);
+	g_font_MENU = TTF_OpenFont("image/lazy.ttf", 80);
 	// Load nền cóntinue
+	strar = TextureManager::LoadTexture("image/menu.jpg");
+
 	backgroud = TextureManager::LoadTexture("image/bk.jpg");
 
 	// load nen  kh game ket thuc
 	bg = TextureManager::LoadTexture("image/go.jpg");
 
 	//Nhân vật 
-	player = new GameObject("image/bird.png",700,500);
+	player = new GameObject("image/bird.png",50,320);
 
 	// Mối hiểm họa
 	enemy1 = new GameObject("image/enemy.png", 300, rand() % 800 + 1);
@@ -104,7 +122,6 @@ void Game::handleEvents()
 void Game::update()
 {
 	player->Update();
-
 	enemy1->Update_Enemy();
 	enemy2->Update_Enemy();
 	enemy3->Update_Enemy();
@@ -146,6 +163,18 @@ void Game::render2()
 
 	SDL_RenderCopy(renderer, bg, NULL, NULL);
 	SDL_RenderPresent(renderer);
+}
+
+void Game::render3()
+{
+	SDL_RenderClear(renderer);
+	SDL_RenderCopy(renderer, strar, NULL, NULL);
+	SDL_RenderPresent(renderer);
+}
+
+void Game::render4()
+{
+
 }
 
 

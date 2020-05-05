@@ -11,6 +11,26 @@ int main(int argc, char* argv[])
 	int frameTime;
 	game = new Game();
 	game->init("window", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false);
+	game->render3();
+	static SDL_Event e;
+	bool quit = false;
+	while (!quit)
+	{
+		while (SDL_PollEvent(&e) != 0)
+		{
+			if (e.type == SDL_QUIT)
+			{
+				quit = true;
+			}
+			else if (e.type == SDL_KEYDOWN)
+			{
+				if (e.key.keysym.sym == SDLK_SPACE)
+				{
+					quit = true;
+				}
+			}
+		}
+	}
 	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
 	{
 		cout << "Error\n";
@@ -38,6 +58,7 @@ int main(int argc, char* argv[])
 			}
 		}
 	}
+	
 	Mix_FreeMusic(music);
 	SDL_Delay(2000);
 	game->render2();

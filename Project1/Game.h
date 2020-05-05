@@ -24,6 +24,8 @@ public:
 	void update();
 	void render();
 	void render2();
+	void render3();
+	void render4();
 	void clean();
 	bool VaCham();
 	bool running() { return isRunning; }
