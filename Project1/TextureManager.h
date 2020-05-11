@@ -1,4 +1,6 @@
 ﻿#pragma once
+#ifndef TextureManger
+#define TextureManger
 
 #include "Game.h"
 
@@ -8,4 +10,9 @@ public:
 	static SDL_Texture* LoadTexture(const char* filename);
 	static void Draw(SDL_Texture* text, SDL_Rect src, SDL_Rect dest);
 };
+
+
+
+#endif // !TextureManger
+
 

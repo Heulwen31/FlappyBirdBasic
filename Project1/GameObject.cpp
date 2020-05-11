@@ -82,9 +82,9 @@ void GameObject::Update()
 
 void GameObject::Update_Enemy()
 {
-	int a = 2;
+	int a = 3;
 	xpos-=a;
-	if (xpos == -32)
+	if (xpos <= -32)
 	{
 		xpos = 800;
 		ypos = rand() % 800 + 1;

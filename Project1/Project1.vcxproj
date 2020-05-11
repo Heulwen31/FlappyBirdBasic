@@ -144,13 +144,11 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="flapybird.cpp" />
     <ClCompile Include="GameObject.cpp" />
-    <ClCompile Include="LoadText.cpp" />
     <ClCompile Include="TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
-    <ClInclude Include="LoadText.h" />
     <ClInclude Include="TextureManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

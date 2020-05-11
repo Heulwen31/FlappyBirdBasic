@@ -1,22 +1,15 @@
 ﻿#include "Game.h"
 #include "TextureManager.h"
 #include "GameObject.h"
-#include "LoadText.h"
+
 
 
 using namespace std;
 
-
-
-//Globally used font
-TTF_Font* gFont = NULL;
-
-
-
 SDL_Renderer* Game::renderer = nullptr;
 SDL_Event Game::event;
 // hinhf nen mo than ket cua ham
-SDL_Texture* strar;
+SDL_Texture* strart;
 SDL_Texture* backgroud;
 SDL_Texture* bg;
 
@@ -37,18 +30,7 @@ GameObject* enemy9;
 GameObject* enemy10;
 
 
-// tt f menu và lựa chọn 
 
-TTF_Font* g_font_text = NULL;
-TTF_Font* g_font_MENU = NULL;
-
-Game::Game()
-{
-}
-
-Game::~Game()
-{
-}
 void Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen)
 {
 	int flags = 0;
@@ -73,16 +55,8 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		
 		isRunning = true;
 	}
-	if (TTF_Init() == -1)
-	{
-		cout << "errror\n";
-	}
-
-	
-	g_font_text = TTF_OpenFont("image/lazy.ttf", 38);
-	g_font_MENU = TTF_OpenFont("image/lazy.ttf", 80);
 	// Load nền cóntinue
-	strar = TextureManager::LoadTexture("image/menu.jpg");
+	strart = TextureManager::LoadTexture("image/menu.jpg");
 
 	backgroud = TextureManager::LoadTexture("image/bk.jpg");
 
@@ -137,7 +111,7 @@ void Game::update()
 
 void Game::render()
 {
-	SDL_RenderClear(renderer);
+	//SDL_RenderClear(renderer);
 
 	SDL_RenderCopy(renderer, backgroud, NULL, NULL);
 	
@@ -159,23 +133,19 @@ void Game::render()
 
 void Game::render2()
 {
-	SDL_RenderClear(renderer);
-
+	//SDL_RenderClear(renderer);
 	SDL_RenderCopy(renderer, bg, NULL, NULL);
 	SDL_RenderPresent(renderer);
 }
 
 void Game::render3()
 {
-	SDL_RenderClear(renderer);
-	SDL_RenderCopy(renderer, strar, NULL, NULL);
+	//SDL_RenderClear(renderer);
+	SDL_RenderCopy(renderer, strart, NULL, NULL);
 	SDL_RenderPresent(renderer);
 }
 
-void Game::render4()
-{
 
-}
 
 
 
